@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: ledger-sync-mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ledger
+      MONGO_INITDB_ROOT_PASSWORD: ledger
+      MONGO_INITDB_DATABASE: ledger
+    volumes:
+      - mongodb_data:/data/db
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ledger-network
+
+volumes:
+  mongodb_data:
+    driver: local
+
+networks:
+  ledger-network:
+    driver: bridge

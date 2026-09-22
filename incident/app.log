@@ -1,0 +1,14 @@
+2026-09-10T22:14:51+05:30 INFO  ingest.IngestService  batch=b-20260910-2214 device=dev-3f1a90c47b21 messages=522
+2026-09-10T22:14:51+05:30 DEBUG parse.Parsers         msg=m-00004-9c11ae sender=AD-HDFCBK-S parser=HdfcSmsParser
+2026-09-10T22:14:51+05:30 DEBUG parse.HdfcSmsParser   msg=m-00004-9c11ae matched=V1 acct=4821 when="04-07-26 07:19"
+2026-09-10T22:14:51+05:30 DEBUG parse.Amounts         msg=m-00004-9c11ae body_head="Rs.5 debited from a/c **4821 on 04-07-26 at 07:19 to UPI/WATER CAN. Avl Bal: Rs.92,213.10."
+2026-09-10T22:14:51+05:30 DEBUG parse.Amounts         msg=m-00004-9c11ae amount_extracted=92213.10
+2026-09-10T22:14:51+05:30 INFO  store.SqlLedgerStore  msg=m-00004-9c11ae saved acct=4821 dir=DEBIT amount=92213.10 merchant="UPI/WATER CAN"
+2026-09-10T22:14:52+05:30 DEBUG parse.Amounts         msg=m-00061-2be440 body_head="Rs.333.33 debited from a/c **4821 on 06-07-26 at 14:02 to SWIGGY. Avl Bal: Rs.88,104.22."
+2026-09-10T22:14:52+05:30 DEBUG parse.Amounts         msg=m-00061-2be440 amount_extracted=333.33
+2026-09-10T22:14:52+05:30 INFO  store.SqlLedgerStore  msg=m-00061-2be440 saved acct=4821 dir=DEBIT amount=333.33 merchant="SWIGGY"
+2026-09-10T22:14:53+05:30 DEBUG parse.Amounts         msg=m-00138-77c0d1 body_head="Dear Customer, Acct XX9075 is credited with INR 18,000 on 01/07/2026 21:14. Info: NEFT INWARD SELF. Avl Bal Rs.49,882.25"
+2026-09-10T22:14:53+05:30 DEBUG parse.Amounts         msg=m-00138-77c0d1 amount_extracted=49882.25
+2026-09-10T22:14:53+05:30 INFO  store.SqlLedgerStore  msg=m-00138-77c0d1 saved acct=9075 dir=CREDIT amount=49882.25 merchant="NEFT INWARD SELF"
+2026-09-10T22:15:04+05:30 INFO  ingest.IngestService  batch=b-20260910-2214 complete written=323 skipped=199
+2026-09-11T03:14:06+05:30 ERROR report.BalanceMonitor account=4821 ledger_derived=-1213003.85 bank_stated=41126.34 divergence=-1254130.19

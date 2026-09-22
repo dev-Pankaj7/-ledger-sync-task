@@ -1,0 +1,37 @@
+name: close external PRs
+
+on:
+  pull_request_target:
+    types: [opened, reopened]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  close:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pr.number,
+              body: [
+                "Thanks for the interest, but this repository does not accept pull requests.",
+                "",
+                "It is assignment scaffolding. Work in your own fork and submit by email to",
+                "`talent.acquisition@simplifymoney.in` as the assignment describes — a PR here",
+                "is not seen as part of your submission.",
+                "",
+                "If you have found a genuine problem with the scaffolding, email us instead."
+              ].join("\n")
+            });
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.number,
+              state: "closed"
+            });

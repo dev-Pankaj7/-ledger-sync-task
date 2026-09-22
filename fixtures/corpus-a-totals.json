@@ -1,0 +1,29 @@
+{
+  "note": "Totals for this corpus. Your ledger must reconcile to these. Row-level answers are not provided.",
+  "raw_messages": 522,
+  "transactions_expected": 257,
+  "accounts": {
+    "4821": {
+      "opening_balance": "48211.40",
+      "closing_balance": "41126.34",
+      "transactions_expected": 146,
+      "spend": "87068.38",
+      "income": "101340.83",
+      "micro_count": 52,
+      "micro_total": "2357.51",
+      "transferred_out": "25000.00",
+      "transferred_in": "6000.00"
+    },
+    "9075": {
+      "opening_balance": "31904.75",
+      "closing_balance": "51210.63",
+      "transactions_expected": 91,
+      "spend": "39058.11",
+      "income": "41450.33",
+      "micro_count": 45,
+      "micro_total": "2086.34",
+      "transferred_out": "6000.00",
+      "transferred_in": "25000.00"
+    }
+  }
+}
