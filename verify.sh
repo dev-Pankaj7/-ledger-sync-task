@@ -1,13 +1,8 @@
 #!/usr/bin/env bash
 # Compiles and runs the pipeline against fixtures/corpus-a.jsonl.
-# Needs a JDK 21 and nothing else - no network, no database, no Gradle.
+# Uses Gradle to manage dependencies (MongoDB driver needed for compilation).
 set -euo pipefail
 cd "$(dirname "$0")"
 
-echo "==> compiling"
-rm -rf build/selfcheck && mkdir -p build/selfcheck
-javac -d build/selfcheck $(find src/main/java -name '*.java')
-
-echo
-echo "==> running"
-java -cp build/selfcheck in.simplifymoney.ledgersync.SelfCheck "$@"
+echo "==> compiling and running with Gradle"
+./gradlew --no-daemon --console=plain selfCheck --args="$*"
