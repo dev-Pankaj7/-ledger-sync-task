@@ -5,4 +5,8 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 echo "==> compiling and running with Gradle"
-./gradlew --no-daemon --console=plain selfCheck --args="$*"
+if [ $# -eq 0 ]; then
+  ./gradlew --no-daemon --console=plain selfCheck
+else
+  ./gradlew --no-daemon --console=plain selfCheck --args="$*"
+fi
